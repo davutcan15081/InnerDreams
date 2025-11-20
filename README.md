@@ -26,17 +26,17 @@
 ## 📱 Uygulama Önizlemesi
 
 <p align="center">
-  <img src="flutter_01.png" width="200" alt="Ana Sayfa"/>
-  <img src="flutter_02.png" width="200" alt="Rüya Analizi"/>
-  <img src="flutter_03.png" width="200" alt="Eğitimler"/>
-  <img src="flutter_04.png" width="200" alt="Uzmanlar"/>
+  <img src="flutter_01.png?v=2024" width="220" alt="Ana Sayfa"/>
+  <img src="flutter_02.png?v=2024" width="220" alt="Rüya Analizi"/>
+  <img src="flutter_03.png?v=2024" width="220" alt="Eğitimler"/>
+  <img src="flutter_04.png?v=2024" width="220" alt="Uzmanlar"/>
 </p>
 
 <p align="center">
-  <img src="flutter_05.png" width="200" alt="Kütüphane"/>
-  <img src="flutter_06.png" width="200" alt="Premium"/>
-  <img src="flutter_07.png" width="200" alt="Profil"/>
-  <img src="flutter_08.png" width="200" alt="Ayarlar"/>
+  <img src="flutter_05.png?v=2024" width="220" alt="Kütüphane"/>
+  <img src="flutter_06.png?v=2024" width="220" alt="Premium"/>
+  <img src="flutter_07.png?v=2024" width="220" alt="Profil"/>
+  <img src="flutter_08.png?v=2024" width="220" alt="Ayarlar"/>
 </p>
 
 ---
