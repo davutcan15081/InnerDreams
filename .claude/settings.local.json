@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /s /b firestore*.rules 2)",
+      "Bash(nul)",
+      "Bash(firebase --version:*)",
+      "Bash(dir /b libcoremodels 2)",
+      "Bash(dir /b libcoreservices 2)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(if exist .env echo FOUND:.env)",
+      "Bash(if exist service-account-key.json echo FOUND:service-account-key.json)",
+      "Bash(if exist androidappgoogle-services.json echo FOUND:android/app/google-services.json)",
+      "Bash(if exist iosRunnerGoogleService-Info.plist echo FOUND:ios/Runner/GoogleService-Info.plist)",
+      "Bash(if exist androidkey.properties echo FOUND:android/key.properties)",
+      "Bash(if exist androidappupload-keystore.jks echo FOUND:android/app/upload-keystore.jks)",
+      "Bash(test:*)",
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)",
+      "Bash(.gitignore)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

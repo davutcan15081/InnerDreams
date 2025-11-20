@@ -1,0 +1,763 @@
+🔹 AŞAMA 1: GENEL MİMARİ VE KATEGORİ YAPISI
+
+🧱 1.1. UYGULAMA YAPISI (NAVİGASYON – ALT MENÜ SEKME SİSTEMİ)
+Uygulama, alt menü (bottom navigation bar) yapısında 4 ana sekmeden oluşur. Kullanıcı giriş yaptıktan sonra bu 4 ana bölüme erişir:
+Rüya Tabiri (AI + Uzman Seçimi ile)
+Rüya Günlüğü
+İçsel Yolculuğum (Görevler + İstatistikler + Seviye)
+Kütüphane (Meditasyonlar + Eğitimler + Kitaplar + AI Eğitimleri)
+📝 Not:
+İstatistikler, "İçsel Yolculuğum" sekmesinin alt bölümünde yer alır.
+Meditasyonlar, "Kütüphane" sekmesinin bir alt kategorisidir. Ancak Kütüphane yalnızca meditasyonlardan ibaret değildir.
+
+🌗 1.2. MOD SEÇİMİ: AYDINLIK / KARANLIK MOD
+Kullanıcı, uygulamayı ilk başlattığında veya ayarlar sekmesinden mod tercihini belirleyebilir:
+🌞 Aydınlık Tema
+🌙 Karanlık Tema
+Tema, tüm uygulama boyunca UI/UX elementlerine uygulanır ve kalıcı şekilde kaydedilir.
+
+🔓 1.3. ÜCRETSİZ & ÜCRETLİ ÜYELİK KARŞILAŞTIRMASI
+Özellik	Ücretsiz Kullanıcı	Abone (Premium) Kullanıcı
+Rüya Tabiri	✅ Haftada 1 rüya yorumu hakkı	✅ Sınırsız + Derin analiz + Öncelikli yanıt
+		
+İçsel Yolculuk (Görevler)	🛑 Tamamen kilitli	✅ Tüm görevler ve seviye sistemi aktif
+İstatistikler	🛑 Gösterim yok	✅ Tam analiz ekranı
+Meditasyonlar	🔓 Her kategoriden sadece 1 içerik görünür	✅ Tüm meditasyonlar aktif
+Kütüphane (Genel)	🔓 Yalnızca öne çıkan özel içerikler görünür	✅ Tüm içerik + AI destekli eğitimler
+Benim Rüya Haritam	🛑 Pasif	✅ Aktif
+Geceden Mesajın Var	 aktif	✅ Aktif
+AI Eğitimi (Soru-Cevaplı)	🛑 Pasif	✅ Aktif
+🔔 Notlar:
+Kullanıcı kısıtlı içerik gördüğü bölümlerde, içerik sonuna geldiğinde "devam etmek için abone olun" promptu alır.
+Rüya Tabiri ekranında ücretsiz hakkı dolan kullanıcıya abone olmadan devam edemeyeceği uyarısı gösterilir .
+
+🔁 1.4. ANA YÖNLENDİRME AKIŞI
+css
+KopyalaDüzenle
+Kayıt / Giriş →
+Onboarding Soruları →
+(İlk Rüya Girişi - Ücretsizde Pasif) →
+Profil Tanıma Soruları →
+Ana Menü (4 sekme) →
+İçsel keşif akışı + Kütüphane içeriği → Aboneliğe yönlendirme
+🌟 Uygulamanın temel mantığı:
+Kullanıcının başlangıçta “deneyimleyip merak etmesi”,
+Ardından bilinçli şekilde abonelik modeline ikna edilmesi üzerine kuruludur.
+
+
+🔹 AŞAMA 2: GİRİŞ – KAYIT – ONBOARDING SORULARI ve AKIŞ
+
+🔐 2.1. GİRİŞ / KAYIT EKRANI
+📱 Ekran Adı: LoginSignUpScreen
+Amaç: Kullanıcının uygulamaya kayıt olmasını veya giriş yapmasını sağlamak.
+Arayüz Öğeleri:
+Uygulama logosu (üst orta)
+İki büyük buton:
+“Giriş Yap” → LoginFlow
+“Hesap Oluştur” → SignupFlow
+Giriş yöntemleri:
+E-Posta ve Şifre
+Google ile Giriş
+Apple ile Giriş
+Ek bağlantılar:
+“Şifremi Unuttum?”
+“Kullanım Koşullarını okudum ve kabul ediyorum” (Zorunlu checkbox)
+🔧 Backend Endpoint’ler:
+http
+KopyalaDüzenle
+POST /auth/signup
+POST /auth/login
+GET /auth/oauth/google
+GET /auth/oauth/apple
+
+🧭 2.2. ONBOARDING SORULARI (Yeni Kullanıcı Soru Akışı)
+📱 Ekran Adı: OnboardingSurvey
+Amaç: Kullanıcının rüyaya olan ilgisini ve içsel beklentilerini anlamak.
+Gösterim: Her soru ayrı ekran/kart yapısında sunulur. (Swipe/Next)
+Cevaplar local + backend’de kaydedilir.
+🔍 Sorular ve Seçenekler:
+“Ne sıklıkla rüya görüyorsun?”
+Her gece
+Haftada birkaç kez
+Ayda birkaç kez
+Neredeyse hiç
+“Rüyalarının ne kadarını hatırlıyorsun?”
+Neredeyse hepsini
+Sembolleri bazen
+Çok nadiren
+Hiç hatırlamıyorum
+“InnerDreams'ten ne bekliyorsun?” (multi-select)
+Rüyalarımı hatırlamak
+Rüyalarımı yorumlatmak
+Kendimi daha iyi tanımak
+Rüyalarımdan ilham almak
+Kabusları dönüştürmek
+Sadece eğlenmek
+🔧 Backend:
+http
+KopyalaDüzenle
+POST /user/onboarding
+Örnek Veri:
+json
+KopyalaDüzenle
+{
+  "dream_frequency": "weekly",
+  "recall_ability": "partial",
+  "expectations": [
+    "self_awareness",
+    "dream_insight",
+    "nightmare_transformation"
+  ]
+}
+
+👤 2.3. İLK RÜYADAN SONRA GÖSTERİLEN PROFİL TANIMA SORULARI
+📱 Ekran Adı: UserProfileSurveyAfterFirstDream
+Amaç: AI tarafından yapılacak yorumlar için kişisel bağlam yaratmak.
+Zamanlama: Kullanıcı ilk rüyasını girdikten hemen sonra bir kez gösterilir.
+🔍 Sorular ve Giriş Tipleri:
+Adınız Soyadınız:
+(Text input)
+Yaşınız:
+(Numeric input)
+Medeni Durumunuz:
+Bekar
+Evli
+İlişkisi var
+Boşanmış
+Diğer
+Çocuğunuz var mı?
+Evet
+Hayır
+Eğer "Evet":
+Kaç çocuk? (Number input)
+Cinsiyetleri? (Multi select: Erkek / Kız / Diğer)
+🔧 Backend:
+http
+KopyalaDüzenle
+POST /user/profile-extension
+Örnek Veri:
+json
+KopyalaDüzenle
+{
+  "full_name": "Elif Kaya",
+  "age": 34,
+  "marital_status": "Evli",
+  "has_children": true,
+  "children": [
+    { "gender": "Kız" },
+    { "gender": "Erkek" }
+  ]
+}
+
+📜 2.4. KULLANIM KOŞULLARI & ONAY
+📱 Ekran Adı: TermsConsentScreen
+Amaç: Kullanım şartlarını yasal olarak kabul ettirmek
+Metin:
+“Bu uygulama kişisel farkındalık ve içsel gelişim sürecinize destek olmak amacıyla hazırlanmıştır. Tıbbi teşhis veya tedavi sunmaz. Herhangı bır rahatsızlıgınız varsa lütfen bir sağlık profesyoneline başvurun.”
+UI Öğeleri:
+Checkbox: “Kullanım koşullarını okudum ve kabul ediyorum.” (Zorunlu)
+Buton: “Devam Et” (checkbox işaretlenmeden aktif olmaz)
+
+🌙 AŞAMA 3: RÜYA GÜNLÜĞÜ & RÜYA ANALİZİ
+
+📝 3.1. RÜYA GÜNLÜĞÜ ANA EKRANI
+📱 Ekran Adı: DreamJournalHome
+Amaç: Kullanıcının yeni rüya girmesi ve önceki rüyalarını görmesi
+UI Öğeleri:
+“+ Yeni Rüya Ekle” butonu (ön planda, sağ altta)
+Geçmiş rüyalar liste şeklinde (başlık + tarih + duygu simgesi)
+“Filtrele”: Rüya türüne göre filtre (Lucid, Kabus, vb.)
+“Geçmiş” sayfası bağlantısı: Kullanıcının tüm girişlerinin kronolojik arşivi
+🛑 Ücretsiz Kullanıcı Kısıtlaması:
+Haftada 1 rüya girişi hakkı.
+Önceki rüyaları görebilir, ancak 1 haftada sadece 1 yeni rüya girebilir.
+“Yeni rüya ekle” butonuna tıkladığında limit dolduysa:
+Popup mesaj: “Bu haftalık rüya girişin doldu.
+Dilersen Premium’a geçip sınırsızca keşfetmeye devam edebilirsin 💫.”
+
+➕ 3.2. YENİ RÜYA EKLEME EKRANI
+📱 Ekran Adı: NewDreamEntry
+Bölüm bölüm ilerleyen, kaydırmalı ya da next-button yapılı bir form sistemidir.
+
+🔹 BÖLÜM 1: RÜYA BİLGİLERİ
+Alan	Tip	Açıklama
+Rüya Tarihi	Date Picker	Varsayılan: bugünün tarihi
+Rüya Başlığı	Text Input	Kısa ve anlamlı bir başlık
+Rüya Metni	Text Area	Serbest metin
+Sesli Kayıt	Audio Input	AI transkriptiyle metne dönüştürme
+AI Yardımıyla Öneri	Buton	“AI ile öneri oluştur” → GPT destekli içerik
+
+🔹 BÖLÜM 2: RÜYA TİPLERİ ve SEMBOLLER
+Alan	Tip	Açıklama
+Rüya Tipi	Dropdown	Normal / Kabus / Lucid / Tekrarlayan
+Hissedilen Duygu	Dropdown + AI	Önerilen duygu listesi (örn: korku, huzur, merak)
+Semboller	AI + Multi-Select	Rüyada geçen nesne/kavramları sembolize eder. Otomatik + manuel
+Rüyadaki Karakterler	Text Input x n	İsim + Rol (örn: Ahmet → Öğretmen)
+
+🔹 BÖLÜM 3: KİŞİSEL YORUM DEĞERLENDİRMESİ
+Alan	Tip	Açıklama
+1. Rüyada baskın duygu neydi?	Dropdown	
+2. Bu duygu şu anki ruh halinle örtüşüyor mu?	Evet/Hayır	
+3. Rüya kişisel olarak sana mı aitti yoksa başkasına mı?	Evet/Hayır	
+4. Uyku kaliten nasıldı?	Slider (1–5)	
+5. Bu rüya gerçek hayattaki bir olayla bağlantılı mıydı?	Evet/Hayır	
+6. Açıklama / Notlar / Sezgi	Text Area	Kendi çözümlemesi veya anlamı
+
+📄 3.3. RÜYA GÖSTERİM EKRANI
+📱 Ekran Adı: DreamEntryReview
+Görüntülenen Öğeler:
+Rüya başlığı
+Tarih
+Rüya metni
+Tip, duygular, semboller, karakterler
+Kullanıcı notları ve duygusal puanlar
+Butonlar:
+“Düzenle”
+“Sil”
+“Analiz Al” → Rüya Tabiri sistemine yönlendirme
+
+🤖 3.4. RÜYA TABİRİ (Yorumlama) MODÜLÜ
+📱 Ekran Adı: DreamInterpretation
+Yolculuk:
+Kullanıcı rüyasını girer → “Yorumla” butonuna tıklar
+Seçenek ekranı çıkar:
+✨ Yorum Seçenekleri:
+Yorum Stili:
+Psikolojik Yaklaşım
+İlham / Spiritüel / Sezgisel Yaklaşım
+Kimden Yorum Almak İstersin?
+Yapay Zeka (AI)
+Yunus Emre Kurtuluş
+AI ile yorum: 10–15 saniye içinde otomatik üretilir.
+Yunus Emre yorumu: manuel olarak “beklemede” statüsünde backend’e düşer.
+🛑 Ücretsiz Kullanıcı Kısıtlaması:
+Haftada sadece 1 rüya yorumu
+Daha fazla yorum için üyelik teklifi popup gösterilir
+
+
+🧾 3.5. BACKEND – RÜYA KAYIT ve ANALİZ VERİ YAPISI
+Endpoint: POST /dreams
+json
+KopyalaDüzenle
+{
+  "date": "2025-06-18",
+  "title": "Ateşli Dağ",
+  "content": "Bir dağın içinde yürüyordum...",
+  "type": "lucid",
+  "emotion": "merak",
+  "symbols": ["dağ", "ateş", "baba figürü"],
+  "characters": [
+    {"name": "Babam", "role": "Aile"}
+  ],
+  "ratings": {
+    "emotion_match": true,
+    "sleep_quality": 4,
+    "personal_experience": true,
+    "real_life_connection": false
+  },
+  "notes": "Geçmiş travmalarla ilgili olabilir."
+}
+
+
+🧾 Aşama 4: Abonelik Sistemi ve Erişim Kısıtlamaları
+🎟️ Abonelik Tipleri:
+Uygulamada iki temel kullanıcı türü olacaktır:
+Ücretsiz Kullanıcı (Free User)
+Abonelikli Kullanıcı (Premium User)
+
+🔓 Ücretsiz Kullanıcı Hakları & Kısıtlamalar
+Özellik	Durum	Açıklama
+📝 Rüya Günlüğü Girişi	❌ Pasif	Ücretsiz kullanıcılar rüya günlüğü özelliğini kullanamaz. (Buton görünür, tıklayınca Premium’a yönlendirir.)
+🔮 Rüya Tabiri (AI veya Danışman)	✅ Kısıtlı	Haftada yalnızca 1 rüya tabiri alabilir (AI veya danışman seçimine göre). Sonrasında Premium ekranına yönlendirme yapılır.
+📚 Kütüphane (Eğitimler, Kitaplar, Meditasyonlar)	✅ Kısıtlı	Her bölümden yalnızca 1 özel içerik (demo formatında) sunulur. Diğer içeriklerin üstü bulanık gösterilir, tıklanınca Premium yönlendirmesi yapılır.
+🧘 Meditasyonlar	✅ Kısıtlı	Her kategoriden sadece 1 örnek meditasyon görünür. Diğerlerine tıklanınca “Premium’a Geç” ekranı açılır.
+🧭 İçsel Yolculuğum (Görevler, Harita, Takip)	❌ Pasif	Bu özellik ücretsiz kullanıcıya tamamen kapalıdır. Giriş yapmak istediğinde Premium ekranı gösterilir.
+📈 İstatistikler	❌ Pasif	Kişisel analizler, duygusal trendler vb. sadece Premium üyeye açıktır.
+💌 Geceden Mesajın Var	aktif	
+🌀 Rüya Haritası & Derin Analiz	❌ Pasif	Bu görselleştirilmiş sembol analizi Premium’a özeldir.
+👤 AI Kişiselleştirme (Açılış mesajı, öneri, yönlendirme)	aktif	
+📅 Geçmiş Rüyalar	aktif	
+🧩 Sembol Eğitimi	✅ Kısıtlı	AI ile interaktif eğitim sadece 1 sembol örneğiyle sınırlıdır. Devam etmek için Premium gerekir.
+
+💎 Premium Üyelik Hakları
+Özellik	Durum	Açıklama
+📝 Rüya Günlüğü	✅ Tam erişim	Sınırsız rüya girişi
+🔮 Rüya Tabiri	✅ Tam erişim	AI ya da Yunus Emre Kurtuluş’tan sınırsız yorum
+📚 Kütüphane	✅ Tam erişim	Tüm eğitim videoları, içerikler, kitap özetleri
+🧘 Meditasyon	✅ Tam erişim	Tüm kategorilere sınırsız erişim
+🧭 İçsel Yolculuğum	✅ Tam erişim	Görevler, dönüşüm rotası, takvim
+📈 İstatistikler	✅ Tam erişim	Uyku kalitesi, duygu döngüsü, sembol analizi
+💌 Geceden Mesajın Var	✅	Her gece niyet girilebilir, sabah AI yorumuyla uyanılır
+🌀 Rüya Haritası	✅	Otomatik analiz + görselleştirilmiş sembol haritası
+🧠 AI Kişiselleştirme	✅	Açılışta kişiye özel mesajlar, öneriler, yönlendirme
+📅 Geçmiş Rüyalar	✅	Tüm rüyaların geçmişi ve istatistiği erişilebilir
+🧩 Sembol Eğitimi	✅	Tüm sembol dersleri, AI ile etkileşimli testler
+
+💳 Ödeme ve Üyelik Detayları
+Aylık Abonelik: X,XX € (App Store + Google Play içi satın alma üzerinden yapılacak)
+Haftalık deneme: 1 hafta ücretsiz (isteğe bağlı)
+Premium’a geç ekranı: Her kısıtlı alanda çağrılır; aynı tasarım kullanılır.
+
+📲 Kullanıcı Yönlendirme & Uyarılar
+Ücretsiz kullanıcı, sınırına ulaştığında şu tip mesajlarla Premium’a teşvik edilir:
+text
+KopyalaDüzenle
+“Bu haftalık rüya yorum hakkınızı kullandınız 🌙  
+Yeni rüyaları birlikte keşfetmek için Premium’a geçebilirsin.”  
+Tüm pasif veya kısıtlı butonlar tıklanınca aynı yönlendirme ekranına gider: “Premium’un sana açacaklarıyla tanış.”
+
+
+🌀 AŞAMA 5: İÇSEL YOLCULUĞUM
+(Modül Adı: InnerJourneyHub)
+🔍 Genel Tanım:
+Bu alan, kullanıcının rüyalarından yola çıkarak kişisel farkındalık kazanması, duygularını tanıması ve içsel dönüşümünü oyunlaştırılmış şekilde desteklemesi amacıyla tasarlanmıştır. Kullanıcı burada bir yolculuğa çıkar; her adım, bir görev, meditasyon veya farkındalık pratiğiyle desteklenir.
+
+📌 Amaçlar:
+Rüyalardan elde edilen sembollere göre kişiye özel görevler sunmak
+Kullanıcının duygu-durumuna uygun meditasyon ve yönlendirmelerle desteklenmesi
+Kullanıcının kendi iç yolculuğunu adım adım görselleştirmesi
+Dönüşüm sürecini oyunlaştırarak bağlılık artırmak
+
+🎮 Temel Özellikler:
+1. Yolculuk Haritası (JourneyMap)
+Kullanıcı, ilerledikçe bir harita açılır (spiral, orman yolu, gökyüzü gibi temalar seçilebilir)
+Her adım bir “görev”, “sembol eğitimi” veya “farkındalık pratiği”dir.
+Haritada kilitli adımlar “abone” olduğunda açılır.
+2. Görev Sistemi (JourneyTasks)
+Görevler haftalık veya rüyaya bağlı olarak atanır.
+Örnek Görevler:
+“Son gördüğün sembolü araştır ve günlükte anlamını yaz”
+“Bu hafta korkunu anlatan bir rüya gördün. Şu meditasyonu dinle ve ardından hislerini yaz.”
+“Bugün sana verilen ‘Sabır’ görevini deneyimle.”
+3. Sembol Eğitimi (AI Soru-Cevaplı) (SymbolAcademy)
+Kullanıcıya rüyasında sık çıkan sembollere özel kısa eğitimler sunulur.
+AI destekli soru-cevap üzerinden kullanıcıya sembolün anlamı derinleştirilir.
+Oyunlaştırılmış: Her doğru cevap bir adım ilerletir.
+4. Dönüşüm Notları (PersonalInsights)
+Kullanıcı, her görev/meditasyon sonrasında kısa cevaplar yazar.
+Bu alan kişisel farkındalık defteri gibi işler.
+Yalnızca kullanıcı görür; AI bu notlara göre öneriler sunar.
+
+🧱 Erişim Kısıtlamaları (Ücretsiz vs Abonelik)
+Özellik	Ücretsiz Kullanıcı	Derin Üye (Premium)
+Yolculuk Haritası	İlk 2 adım	Tüm adımlar açık
+Görev Sistemi	Haftada 1 görev	Her rüyaya özel görev
+Sembol Eğitimi	Sadece örnek eğitim	Tüm sembollerde interaktif eğitim
+Dönüşüm Notları	sınırsız	Sınırsız + AI tavsiye
+
+🎨 Görsel UI/UX Notları:
+Harita animasyonlu ve ilerleme gösteren bir yapıda olacak
+Görev kartları minimal, sezgisel ikonlarla sunulacak
+Kullanıcının ilerleme yüzdesi, yıldızlar, ışık halkaları gibi öğelerle temsil edilecek
+
+🧠 AI Entegrasyonu:
+Rüyadaki sembollere göre görev önerisi
+Kullanıcının önceki duygu ve dönüşüm notlarına göre yol haritası
+“Bugün iç dünyanda neye ihtiyacın var?” gibi dinamik sorularla yönlendirme
+
+
+📚 AŞAMA 6: KÜTÜPHANE
+(Modül Adı: InnerLibraryHub)
+🔍 Genel Tanım:
+Kütüphane bölümü, kullanıcılara meditasyonlar, eğitim içerikleri, rüya sözlüğü, kitap önerileri, ve AI ile sembol eğitimi gibi kaynaklara ulaşabilecekleri merkezi bir bilgi ve dönüşüm merkezidir. Kullanıcı burada ruhsal gelişimini derinleştirebilir, aynı zamanda rüyalarıyla ilgili içeriklerle kendini eğitebilir.
+
+🧩 Alt Kategoriler ve Özellikler:
+1. Meditasyonlar
+5 ana kategori:
+Uyku öncesi
+Sabah niyet meditasyonları
+Rüya sonrası duygusal düzenleme
+Derinleşme ve farkındalık
+İçsel rehberlik/bağlantı çalışmaları
+Her kategori içinde 5-10 arası sesli meditasyon
+Yapay zeka, kullanıcı rüyalarına veya ruh haline göre meditasyon önerir.
+2. Eğitim İçerikleri (Video/Ses/Metin)
+Kısa ders formatında:
+“Rüyalarla çalışmaya giriş”
+“Sembollerin dili ve yapısal çözümleme”
+“Rüyaları hayatına entegre etme yolları”
+Videolar, interaktif quizler veya yazılı anlatımlarla desteklenir.
+3. Rüya Sembolleri Sözlüğü
+Harf sırasına göre semboller listelenir.
+Her sembolde 3 katman:
+Evrensel anlam
+Kültürel anlam
+Psikolojik anlam (AI + uzman görüşü)
+Kullanıcı rüyasında geçen sembolleri buradan aratabilir.
+4. AI ile Sembol Eğitimi
+Kullanıcı sık gördüğü sembolleri seçer
+AI bu semboller üzerine interaktif sorular sorar (quiz formatı)
+Cevaplara göre kullanıcıya önerilen kaynaklar sunulur
+Oyunlaştırılmış: Rozet sistemi, ilerleme seviyesi
+5. Kitap Önerileri & Kaynaklar
+Rüya psikolojisi, bilinçaltı çalışmaları, sembolizm gibi temalarda önerilen kitaplar
+Bazı kitaplarda uygulama içinden bölümler açılır (örnek sayfa, alıntı, video özet)
+
+💡 Kütüphane UI/UX Özellikleri:
+Kategoriye göre filtreleme (Meditasyonlar, Eğitim, Sözlük vs)
+Arama çubuğu: sembol, anahtar kelime veya kategori araması
+İçerik kartları sade ve ruhsal tonlarda (mor, altın, beyaz)
+
+📌 Erişim Politikası:
+Alt Modül	Ücretsiz Kullanıcı	Derin Üye (Üyelik)
+Meditasyonlar	Her kategoriden 1 örnek içerik	Tüm meditasyonlara erişim
+Eğitim İçeriği	İlk video veya yazı ücretsiz	Tüm eğitim serisi açık
+Rüya Sözlüğü	Tam erişim	+ AI açıklamalı detaylar
+AI Sembol Eğitimi	Haftada 1 sembol eğitimi	Sınırsız ve rozet sistemi
+Kitap Önerileri	Tüm önerileri görebilir	Seçilen içeriklerin özetlerine erişim
+
+
+🎯 AI Destekli Akıllı Öneri Sistemi:
+Rüyadaki sembollere ve kullanıcının yolculuğuna göre içerik önerisi
+“Bugün sana iyi gelecek içerik” bölümü ana ekrana taşınabilir
+
+
+🌙 AŞAMA 7: RÜYA TABİRİ MODÜLÜ (Yorumlama Asistanı)
+(Modül Adı: DreamInterpretationAI)
+🔮 GENEL TANIM
+Bu modül, kullanıcıların yalnızca rüyalarını girmekle kalmayıp doğrudan anlam arayışı içinde oldukları senaryolara hizmet eder. Bazı kullanıcılar yalnızca “rüya yorumlatmak” için uygulamayı indirir. Bu nedenle, meditasyon ya da içsel yolculuk bölümlerine girmeden sadece rüyasını girip yorum alma seçeneğine sahip olur.
+
+🔐 ERİŞİM POLİTİKASI:
+Özellik	Ücretsiz Kullanıcı	Derin Üye (Üyelik)
+Haftalık Rüya Yorumu	1 rüya hakkı	Sınırsız yorum
+Yorumlayıcı Seçimi	Sadece AI	AI + Uzman seçimi
+Yorumlama Derinliği	Temel tabir	Geniş açıklama + Sembollerle ilişki
+Yorum Tipi	İlimsel + psikolojik	 İlimsel + psikolojik 
+
+🧠 YORUMLAYICI SEÇİMİ:
+Kullanıcıya şu 2 seçenek sunulur:
+AI Yorumcusu (anında otomatik)
+Yunus Emre Kurtuluş tarafından (manuel/AI destekli özel yorum)
+Bu seçenek seçildiğinde yorum süresi uzayabilir (örn. 12 saat içinde teslim).
+
+💬 YORUM TİPİ SEÇENEĞİ:
+Yorumu nasıl almak istersiniz?
+🔹 İlimsel Tabir: Kadim semboller, tasavvufi bakış, geleneksel yorum
+🔸 Psikolojik Yorum: Bilinçaltı, travmalar, iç dünyayla bağlantılar
+Yorum tipine göre sistem farklı dil ve anlatım tarzı benimser.
+
+📝 RÜYA GİRİŞ FORMU (aynı DreamJournal ile entegredir):
+Rüya metni (manuel giriş veya sesli kayıt)
+Rüya türü: Normal / Lucid / Kabus / Tekrarlayan
+Hissedilen temel duygu (seçim)
+“Yorum almak istiyorum” kutucuğu
+Seçimler:
+Yorumlayıcı: AI / Yunus Emre Kurtuluş
+Yorum tipi: İlimsel / Psikolojik
+Abonelik durumuna göre kullanıcıya uygun seçenekler aktif/pasif hale gelir
+
+🧾 GÖRÜNÜM VE KULLANICI DENEYİMİ:
+Yorum ekranı mesaj ekranı gibi görünür
+“Rüyanı aldım. Şimdi senin için açılan sembolleri inceleyeceğim...”
+“Bu rüya seni geçmişte çözülmemiş bir duyguyla yüzleştiriyor olabilir.”
+“Sembol: Su → Bilinçaltı + Duygular. Kabaran su = kontrolsüz duygu.”
+Sonuç ekranı:
+Rüya özeti
+Seçilen yorum tipiyle yazılmış yorum
+Önerilen içerikler (meditasyon, eğitim, sembol açıklamaları)
+
+📦 BACKEND ENTEGRASYONU (özet):
+json
+KopyalaDüzenle
+{
+  "dream_text": "Bir çölün ortasında yalnız yürüyordum...",
+  "interpreter": "AI", 
+  "interpretation_type": "psychological",
+  "user_status": "free",
+  "interpretation_response": "Bu rüya yalnızlıkla yüzleşme sürecinde olduğuna işaret edebilir. Çöl, bazen kişinin içsel boşluklarını temsil eder..."
+}
+
+🧭 STRATEJİK AMAÇ:
+Bu modül:
+Rüyaya özel, hızlı çözüm isteyen kullanıcıları yakalar
+Abonelik satışını hızlandırır (“Bu rüyada daha fazlası olabilir” mesajı ile)
+Uygulamanın temel vaadlerinden biri olan rüya ile kişisel rehberlik vizyonunu taşır
+
+
+🕰️ AŞAMA 8: GEÇMİŞ EKRANI (History & Insights Paneli)
+(Modül Adı: DreamHistoryAnalytics)
+
+🎯 AMAÇ
+Kullanıcılar zaman içinde yazdıkları rüyaları, yorumları, duygusal döngüleri ve içsel gelişim verilerini tek bir yerde görebilmeli. Bu ekran, hem istatistiksel hem sezgisel bir geri bildirim alanı sunar.
+
+🧭 ANA MENÜDE KONUMU
+"İçsel Yolculuğum" menüsünün alt sekmesi olarak görünür.
+Uygulama tasarımı karanlık/aydınlık moda göre otomatik uyarlanır.
+
+📊 GÖRÜNTÜLENECEK VERİLER
+📅 1. RÜYA ZAMAN ÇİZELGESİ (Dream Timeline)
+Takvim veya zaman akışı şeklinde geçmiş rüyaların kronolojik listesi
+Her rüyaya tıklayınca: Rüya özeti + yorum + varsa AI analizi
+Etiketlerle filtreleme: “Lucid”, “Kabus”, “Duygusal”, “Aynı Sembol”
+📈 2. DUYGU & TEMA ANALİZİ
+Hangi duygular baskın?
+%40 huzur / %25 korku / %20 karmaşa / %15 mutluluk
+Haftalara veya aylara göre duygu dalgalanması grafiği
+Kullanıcının yorumladığı “Bu duygu şu anki ruh halimi yansıtıyor” cevaplarına göre zihin-duygu uyumu
+🧠 3. EN SIK GÖRÜLEN SEMBOLLER
+Top 5 sembol: “su”, “ev”, “merdiven”, “karanlık”, “çocuk”
+Her sembolün karşısında: kaç defa göründüğü ve yorumlara etkisi
+“Sembol yolculuğun” gibi kişisel dönüşüm haritası (örneğin, 3 ayda sembol değişimi)
+🌗 4. RÜYA & UYKU VERİLERİ (isteğe bağlı entegrasyon)
+Eğer kullanıcı isterse: telefon/sağlık uygulamalarından uyku süresi ve kalitesi entegre edilebilir
+Rüyaların yoğunluğu ve uyku süresi korelasyonu
+
+🧠 ANALİTİK YAPAY ZEKA NOTLARI (Yalnızca Abonelere)
+“Son 2 haftadır rüyalarında tekrar eden semboller var. Bu dönemin zihinsel olarak seni yorduğu görülüyor. ‘Karanlık’ sembolü ile gelen duygular genellikle kontrolsüzlük hissine işaret ediyor. Belki şu meditasyonu denemek istersin: ‘Köklenme ve Güven’”
+
+🔓 ERİŞİM KISITLAMALARI
+Özellik	Ücretsiz Kullanıcı	Derin Üye
+Rüya geçmişini görme	✅	✅
+Temel rüya listesi	✅ (sadece başlık)	✅ (tam içerik)
+Analiz & grafikler	❌	✅
+Sembol sıklığı raporu	❌	✅
+AI geri bildirim notları	❌	✅
+
+📦 BACKEND MODELİ (JSON Örnek):
+json
+KopyalaDüzenle
+{
+  "dreams": [
+    {
+      "date": "2025-06-15",
+      "title": "Karanlık Oda",
+      "emotion": "korku",
+      "symbols": ["karanlık", "kapı"],
+      "ai_insight": "Kontrolsüzlük hissi ve bilinçaltı korkular aktif olabilir."
+    }
+  ],
+  "emotion_stats": {
+    "fear": 45,
+    "joy": 20,
+    "peace": 15,
+    "chaos": 20
+  },
+  "symbol_trends": {
+    "karanlık": 6,
+    "su": 4,
+    "çocuk": 3
+  }
+}
+
+🎁 STRATEJİK AMAÇ
+Kullanıcıya kendi zihinsel verisini göstererek içgörü kazandırır.
+Premium üyelik teşvik edilir: "Bu rüya verileri sana özel ipuçları içeriyor olabilir."
+İçsel dönüşüm yolculuğu izlenebilir hale gelir: “Nereden geldin, nereye gidiyorsun?”
+
+
+🎓 AŞAMA 9: EĞİTİMLER ve AI DESTEKLİ SEMBOL EĞİTİMİ
+(Modül Adı: SymbolicLearningCenter)
+
+🎯 AMAÇ
+Bu modül, kullanıcıya rüya diliyle ilgili temel bilgileri öğretmek, sembolleri tanıtmak, ve yapay zekâ ile birebir etkileşimli eğitim sunmak için tasarlandı. Kullanıcı ister klasik eğitimler üzerinden öğrenebilir, ister yapay zekâ ile soru-cevaplı bir öğrenme deneyimi yaşayabilir.
+
+📚 MODÜL 1: KLASİK EĞİTİMLER (Videolu / Yazılı)
+Alt Kategori: Kütüphane > Eğitimler
+Başlıklar:
+Rüya Psikolojisine Giriş
+Freud ve Jung’un Sembol Teorileri
+Evrensel Semboller ve Kültürel Yorumlar
+Rüyada Su, Ev, Yol, Hayvanlar ne anlama gelir?
+Rüyada Duyguların Rolü
+Rüyaları Hatırlama Teknikleri
+Rüya Niyetleri ve Zihinsel Hazırlık
+Format:
+Kısa videolar (2-5 dk)
+PDF veya kısa yazı versiyonları
+Bazı eğitimlerin sonunda mini quizler
+Kullanıcılar İçin Not:
+Ücretsiz kullanıcılar sadece 1 veya 2 eğitim görebilir
+Premium kullanıcılar tüm eğitimlere erişebilir
+
+🤖 MODÜL 2: AI DESTEKLİ SEMBOL EĞİTİMİ (Soru-Cevap)
+Alt Kategori: Kütüphane > Sembolleri Öğren
+Sistem Adı: "Sembol Rehberi AI"
+İşleyiş Şekli:
+Kullanıcı bir sembol girer: “Yılan”
+AI önce kullanıcıya sorar:
+"Bu sembolü hangi duyguyla gördüğünü hatırlıyor musun?"
+"Rüya kişisel miydi yoksa bir dış kişiyle ilgili miydi?"
+"Yılan seni takip ediyor muydu, yoksa sen mi ona yaklaşıyordun?"
+Ardından AI birkaç olası anlam verir:
+Tehlike, Dönüşüm, Cinsellik, Bilgelik
+Kültürel farklılıklara göre anlam varyasyonları
+Son aşamada kullanıcıya şunu sorar:
+“Sence bu açıklamalardan hangisi şu anki hayatındaki duruma daha çok uyuyor?”
+Sonuç: AI, sembolün kullanıcı için anlamını birlikte keşfeder.
+
+🧠 ÖZELLİKLER
+Özellik	Ücretsiz Kullanıcı	Derin Üye
+2 adet eğitim içeriği	✅	✅
+Tüm eğitim serisi	❌	✅
+AI ile 1 sembol analizi	✅ (haftada 1)	✅ (sınırsız)
+Soru-cevaplı sembol eğitimi	❌ (örnek gösterim)	✅
+AI önerisiyle kişiselleştirme	❌	✅
+
+🔄 TEKNİK DETAYLAR
+Kullanılan AI modeli: GPT-4-turbo veya özel fine-tune edilmiş DreamSymbolModel
+Backend endpoint:
+POST /learn/symbol-ai
+GET /content/education/video
+GET /content/education/pdf
+
+🎁 STRATEJİK DEĞER
+Kullanıcılar yalnızca sembollerin anlamını ezberlemek yerine kişisel bir bağ kurarak öğreniyor.
+Semboller ile sezgisel ilişki kurma becerisi artar.
+İçerikler kişisel gelişim, psikoloji ve metafor okuryazarlığıyla zenginleşir.
+
+💬 AŞAMA 10: SEANSLAR (AI Koçluk + Uzman Desteği)
+(Modül Adı: InnerSessions)
+
+🎯 AMAÇ
+Bu modül, kullanıcının rüyalarını ve içsel durumunu daha derinlemesine analiz edebilmesi için kişiselleştirilmiş yönlendirme, AI koçluğu ve opsiyonel olarak canlı uzman görüşmesi sunar.
+
+🔹 MODÜL 1: YAPAY ZEKA KOÇU (AI Coach) - Opsiyonel
+Adı: “İç Rehberin” veya “Rüya Koçu”
+İşleyiş:
+Kullanıcı rüyasını girdikten sonra ya da içsel yolculuk sürecinde yapay zekaya şunları sorabilir:
+“Bu rüya bana ne anlatmak istiyor olabilir?”
+“Bu sembol hayatımdaki hangi temayı temsil ediyor?”
+“Kabusum tekrar etti, neden olabilir?”
+“Bu his bende neden tetiklendi?”
+AI yanıtları, kullanıcının rüya günlüğündeki geçmiş verileri ve onboarding soruları baz alınarak verilir.
+Özellikler:
+Konuşma arayüzü (chat gibi)
+Sezgisel ve nazik dil
+“Bugün senin için hangi meditasyon iyi olurdu?” gibi yönlendirmeler
+Kullanıcıya mini görevler ya da farkındalık önerileri sunar
+Geçmiş verilerle entegre (rüya, duygu, sembol, uyku kalitesi vs.)
+
+🔹 MODÜL 2: CANLI DESTEK OPSİYONU
+Kapsam: Premium paket içeriğine ek olarak, ek ücretli olabilir.
+Uzman Tipleri:
+Rüya Analisti (Freud–Jung temelli)
+Psikolojik Danışman
+Spiritüel Koç / Enerji Terapisti
+Uyku Danışmanı (isteğe bağlı)
+Kullanım Şekli:
+Randevu sistemi (takvim üzerinden)
+Zoom ya da uygulama içi video/ses ile bağlantı
+Rüyaya önceden erişim imkanı: Uzman, kullanıcının gönderdiği rüyayı önceden inceler
+Kullanıcı değerlendirme yapabilir → “Bu görüşme sana nasıl geldi?”
+Teknik Yapı:
+Backend takvim API entegrasyonu
+Uçtan uca şifreli iletişim (gizlilik önceliği)
+Not bırakma alanı → AI/uzman sonrası notlar
+
+🧠 ÖZELLİKLER
+Özellik	Ücretsiz Kullanıcı	Derin Üye
+Haftalık 1 AI seansı	✅	✅ (sınırsız)
+Geçmiş rüyalara göre analiz	❌	✅
+Meditasyon veya niyet önerisi	❌	✅
+Canlı seans başvuru hakkı	❌	✅ (ek ücretli)
+Seans sonrası kişisel not bölümü	✅	✅
+
+🌟 STRATEJİK DEĞER
+Uygulama bir içerik tüketim platformu olmaktan çıkar; aktif rehberlik ve kişisel gelişim koçluğu sunar.
+Kullanıcı, iç sesini güçlendirir ve düzenli olarak AI ile konuşarak sezgilerini besler.
+Kişisel bağ kurulmasını artırır: “Uygulama beni anlıyor” his
+
+💬 AŞAMA 10: SEANSLAR (AI Koçluk + Uzman Desteği)
+(Modül Adı: InnerSessions)
+
+🎯 AMAÇ
+Bu modül, kullanıcının rüyalarını ve içsel durumunu daha derinlemesine analiz edebilmesi için kişiselleştirilmiş yönlendirme, AI koçluğu ve opsiyonel olarak canlı uzman görüşmesi sunar.
+
+🔹 MODÜL 1: YAPAY ZEKA KOÇU (AI Coach)
+Adı: “İç Rehberin” veya “Rüya Koçu”
+İşleyiş:
+Kullanıcı rüyasını girdikten sonra ya da içsel yolculuk sürecinde yapay zekaya şunları sorabilir:
+“Bu rüya bana ne anlatmak istiyor olabilir?”
+“Bu sembol hayatımdaki hangi temayı temsil ediyor?”
+“Kabusum tekrar etti, neden olabilir?”
+“Bu his bende neden tetiklendi?”
+AI yanıtları, kullanıcının rüya günlüğündeki geçmiş verileri ve onboarding soruları baz alınarak verilir.
+Özellikler:
+Konuşma arayüzü (chat gibi)
+Sezgisel ve nazik dil
+“Bugün senin için hangi meditasyon iyi olurdu?” gibi yönlendirmeler
+Kullanıcıya mini görevler ya da farkındalık önerileri sunar
+Geçmiş verilerle entegre (rüya, duygu, sembol, uyku kalitesi vs.)
+
+🔹 MODÜL 2: CANLI DESTEK OPSİYONU
+Kapsam: Premium paket içeriğine ek olarak, ek ücretli olabilir.
+Uzman Tipleri:
+Rüya Analisti (Freud–Jung temelli)
+Psikolojik Danışman
+Spiritüel Koç / Enerji Terapisti
+Uyku Danışmanı (isteğe bağlı)
+Kullanım Şekli:
+Randevu sistemi (takvim üzerinden)
+Zoom ya da uygulama içi video/ses ile bağlantı
+Rüyaya önceden erişim imkanı: Uzman, kullanıcının gönderdiği rüyayı önceden inceler
+Kullanıcı değerlendirme yapabilir → “Bu görüşme sana nasıl geldi?”
+Teknik Yapı:
+Backend takvim API entegrasyonu
+Uçtan uca şifreli iletişim (gizlilik önceliği)
+Not bırakma alanı → AI/uzman sonrası notlar
+
+🧠 ÖZELLİKLER
+Özellik	Ücretsiz Kullanıcı	Derin Üye
+Haftalık 1 AI seansı	✅	✅ (sınırsız)
+Geçmiş rüyalara göre analiz	❌	✅
+Meditasyon veya niyet önerisi	❌	✅
+Canlı seans başvuru hakkı	❌	✅ (ek ücretli)
+Seans sonrası kişisel not bölümü	✅	✅
+
+🌟 STRATEJİK DEĞER
+Uygulama bir içerik tüketim platformu olmaktan çıkar; aktif rehberlik ve kişisel gelişim koçluğu sunar.
+Kullanıcı, iç sesini güçlendirir ve düzenli olarak AI ile konuşarak sezgilerini besler.
+Kişisel bağ kurulmasını artırır: “Uygulama beni anlıyor” hissi.
+
+Hazırsan AŞAMA 11: AYARLAR, PROFİL, MOD TERCİHİ ve TEKNİK ÖZELLİKLER kısmına geçebiliriz. Geçelim mi?
+Şunu dedin:
+geçelim 
+ChatGPT:
+Harika! Şimdi son yapısal aşamaya geçiyoruz:
+
+🛠️ AŞAMA 11: AYARLAR, PROFİL, MOD SEÇİMİ ve TEKNİK SEÇENEKLER
+(Modül Adı: SettingsAndSystemPrefs)
+
+⚙️ GENEL AYARLAR
+Kullanıcıların deneyimlerini özelleştirebileceği alan.
+🔹 Hesap Yönetimi
+Profil Bilgileri: Ad, yaş, medeni durum, çocuk durumu
+E-posta ve şifre değiştirme
+Hesabı sil / dondur seçeneği
+Bildirim tercihleri (push notification ayarı)
+Haftalık rüya hatırlatma bildirimi: Açık / Kapalı
+AI kişiselleştirme verisi sıfırlama
+
+🌗 MOD SEÇİMİ: KARANLIK & AYDINLIK
+Uygulamanın görünümü, kullanıcının ruh haline ya da saatine göre değiştirilebilir.
+Özellikler:
+Açılışta kullanıcıya sorulur: “Aydınlık mı, karanlık mı bir yolculuk tercih edersin?”
+Ayarlar menüsünden değiştirilebilir
+Sistem saatiyle senkronize otomatik geçiş (opsiyonel)
+Gece modu: Göz yormayan morumsu-lacivert tonlar + altın yazılar
+Gündüz modu: Pastel lavanta, toprak tonları, beyaz altın detaylar
+
+🌐 DİL SEÇİMİ
+Uygulama çok dilli olacak şekilde tasarlanır. İlk aşamada:
+Türkçe
+İngilizce
+(Gelecekte Almanca, İspanyolca, Arapça vs.)
+Açılışta kullanıcıdan dil seçmesi istenir. Ayarlardan da değiştirilebilir.
+
+📂 GEÇMİŞ EKRANI (HistoryView)
+Kullanıcıya ait geçmiş verilerin listelendiği, hafızayı canlı tutan bir ekran.
+İçerikler:
+Tüm rüya girişleri
+İçsel yolculuk görevleri
+Meditasyon geçmişi
+Alınan yorumlar / AI analizleri
+Seans kayıtları (görüşme notları, tavsiyeler)
+Filtreleme ve arama fonksiyonu:
+“Rüyalarında en çok geçen sembol neydi?” gibi aramalar yapılabilir.
+
+🔐 GİZLİLİK ve VERİ POLİTİKASI
+Kullanıcı tüm verilerinin güvenliğine dair bilgilendirilir.
+Veri işleme izinleri onboarding sırasında açık şekilde sunulur.
+“Tüm kişisel verilerimi indir” veya “verileri sil” opsiyonu
+OpenAI/AI model API kullanımı açık şekilde belirtilir
+
