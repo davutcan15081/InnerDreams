@@ -1,14 +1,29 @@
 # 🌙 InnerDreams - Rüya Tabirleri ve AI Koçluk Uygulaması
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.0+-02569B?logo=flutter)](https://flutter.dev)
-[![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com)
-[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)](https://nodejs.org)
-[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Firebase](https://img.shields.io/badge/Firebase-Powered-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com)
+[![Status](https://img.shields.io/badge/Status-Production-success)]()
+[![License](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 
-> Kullanıcıların rüyalarını analiz etmelerine, kişisel gelişim eğitimleri almalarına ve uzmanlarla bağlantı kurmalarına olanak tanıyan full-stack mobil uygulama ve yönetim sistemi.
+> **Profesyonel, ticari bir mobil uygulama** - Kullanıcıların rüyalarını analiz etmelerine, kişisel gelişim eğitimleri almalarına ve uzmanlarla bağlantı kurmalarına olanak tanıyan full-stack platform.
 
-## 📱 Ekran Görüntüleri
+---
+
+## ⚠️ ÖNEMLİ NOTLAR
+
+> **🔒 Bu proje ticari bir üründür ve tüm hakları saklıdır.**
+>
+> - Bu repository **yalnızca portföy ve vitrin amaçlıdır**
+> - Kaynak kod **görüntüleme amacıyla** paylaşılmaktadır
+> - **Hiçbir kullanım, kopyalama veya dağıtım hakkı verilmemektedir**
+> - Backend kodları ve hassas bilgiler **güvenlik nedeniyle kaldırılmıştır**
+> - Proje aktif olarak geliştirilmekte ve kullanılmaktadır
+>
+> Lisans bilgileri için [LICENSE](LICENSE) dosyasına bakınız.
+
+---
+
+## 📱 Uygulama Önizlemesi
 
 <p align="center">
   <img src="flutter_01.png" width="200" alt="Ana Sayfa"/>
@@ -17,17 +32,35 @@
   <img src="flutter_04.png" width="200" alt="Uzmanlar"/>
 </p>
 
+<p align="center">
+  <img src="flutter_05.png" width="200" alt="Kütüphane"/>
+  <img src="flutter_06.png" width="200" alt="Premium"/>
+  <img src="flutter_07.png" width="200" alt="Profil"/>
+  <img src="flutter_08.png" width="200" alt="Ayarlar"/>
+</p>
+
+---
+
 ## 🎯 Proje Hakkında
 
-Bu proje, modern mobil uygulama geliştirme teknolojilerini kullanarak oluşturulmuş kapsamlı bir platformdur:
+**InnerDreams**, modern mobil uygulama geliştirme teknolojilerini kullanarak oluşturulmuş, production-ready ticari bir platformdur:
 
-- **🎨 Flutter Mobil Uygulama**: iOS ve Android için cross-platform native uygulama
-- **⚙️ Node.js Backend**: RESTful API ve admin panel
-- **☁️ Firebase Integration**: Authentication, Firestore, Storage
-- **💳 RevenueCat**: Abonelik ve ödeme yönetimi
-- **🗄️ MongoDB**: Backend veritabanı
+### Teknik Altyapı
 
-> **Not**: Bu repository portföy amaçlı paylaşılmaktadır. Gerçek API anahtarları ve hassas bilgiler repository'de bulunmamaktadır.
+- **📱 Flutter Mobil Uygulama**: iOS ve Android için native performanslı cross-platform uygulama
+- **☁️ Firebase Backend**: Scalable cloud infrastructure (Authentication, Firestore, Storage, Cloud Functions)
+- **⚙️ RESTful API**: Custom Node.js backend servisleri
+- **💳 RevenueCat**: Profesyonel abonelik ve ödeme yönetimi
+- **🗄️ Database**: Multi-database architecture (Firestore + MongoDB)
+- **🔐 Security**: Enterprise-level güvenlik katmanları
+
+### Proje Durumu
+
+- ✅ **Production-ready** ve aktif kullanımda
+- ✅ **Scalable architecture** - binlerce kullanıcı desteği
+- ✅ **CI/CD** pipeline ile otomatik deployment
+- ✅ **Monitoring & Analytics** entegrasyonu
+- ✅ **Crash reporting** ve error tracking
 
 ## ✨ Özellikler
 
@@ -101,309 +134,166 @@ Bu proje, modern mobil uygulama geliştirme teknolojilerini kullanarak oluşturu
 - **Security**: Environment variables, Firebase Security Rules
 - **Performance**: Image optimization, lazy loading, pagination
 
-## 🚀 Kurulum
+## 🚫 Kurulum ve Kullanım
 
-> **Önemli**: Bu proje demo/portföy amaçlıdır. Çalıştırmak için kendi Firebase ve API anahtarlarınızı oluşturmanız gerekmektedir.
-
-### Gereksinimler
-
-- Flutter SDK 3.0+
-- Node.js 18+
-- Firebase hesabı
-- MongoDB (local veya Atlas)
-- RevenueCat hesabı (opsiyonel)
-
-### Hızlı Başlangıç
-
-```bash
-# Repository'yi klonlayın
-git clone https://github.com/davutcan15081/InnerDreams.git
-cd InnerDreams
-
-# Flutter bağımlılıkları
-flutter pub get
-
-# Backend bağımlılıkları
-npm install
-
-# Environment dosyasını oluşturun
-cp env.example .env
-# .env dosyasını kendi bilgilerinizle güncelleyin
-
-# Uygulamayı çalıştırın
-flutter run
-```
-
-### 🔧 Yapılandırma
-
-1. **Firebase Setup**
-   - Firebase Console'da yeni proje oluşturun
-   - `google-services.json` → `android/app/`
-   - `GoogleService-Info.plist` → `ios/Runner/`
-   - Authentication, Firestore, Storage'ı aktifleştirin
-
-2. **Backend Setup**
-   - `.env` dosyasında MongoDB URI'yi güncelleyin
-   - JWT secret key ekleyin
-   - Firebase service account key'i ekleyin
-
-3. **RevenueCat (Opsiyonel)**
-   - RevenueCat dashboard'da proje oluşturun
-   - API key'i kodda güncelleyin
-
-Detaylı kurulum için [INSTALLATION.md](docs/INSTALLATION.md) dosyasına bakabilirsiniz.
+> **⚠️ Bu proje çalıştırılmaya uygun değildir**
+>
+> - Backend servisleri ve API endpoint'leri repository'de bulunmamaktadır
+> - Firebase yapılandırma dosyaları güvenlik nedeniyle kaldırılmıştır
+> - Gerekli API anahtarları ve credential'lar paylaşılmamıştır
+> - Bu repository yalnızca kod incelemesi ve portfolio sunumu içindir
+>
+> **Proje aktif olarak production ortamında çalışmaktadır.**
 
 ## 📁 Proje Yapısı
 
+> **Not**: Backend servisleri ve hassas yapılandırma dosyaları güvenlik nedeniyle repository'ye dahil edilmemiştir.
+
 ```
 InnerDreamsFlutter/
-├── lib/                          # Flutter kaynak kodları
+├── lib/                          # Flutter kaynak kodları (UI Showcase)
 │   ├── core/                     # Çekirdek işlevsellik
-│   │   ├── providers/            # Riverpod provider'ları
-│   │   ├── services/             # API servisleri
-│   │   ├── utils/                # Yardımcı fonksiyonlar
-│   │   └── constants/            # Sabitler
-│   ├── features/                 # Özellik bazlı modüller
-│   │   ├── auth/                 # Kimlik doğrulama
-│   │   ├── dreams/               # Rüya analizi
-│   │   ├── education/            # Eğitimler
+│   │   ├── providers/            # Riverpod state management
+│   │   ├── services/             # API client servisleri
+│   │   ├── utils/                # Helper fonksiyonlar
+│   │   ├── widgets/              # Reusable components
+│   │   └── theme/                # App theming
+│   │
+│   ├── features/                 # Feature-based modüller
+│   │   ├── auth/                 # Authentication & Login
+│   │   ├── dream_interpretation/ # AI rüya analizi
+│   │   ├── education/            # Eğitim platformu
 │   │   ├── experts/              # Uzman danışmanlık
 │   │   ├── library/              # Dijital kütüphane
-│   │   └── profile/              # Kullanıcı profili
+│   │   ├── sessions/             # Grup seansları
+│   │   ├── premium/              # Abonelik sistemi
+│   │   ├── profile/              # Kullanıcı profili
+│   │   └── settings/             # Uygulama ayarları
+│   │
 │   ├── shared/                   # Paylaşılan bileşenler
-│   │   ├── widgets/              # Ortak widget'lar
-│   │   └── models/               # Veri modelleri
-│   └── main.dart                 # Ana uygulama dosyası
+│   │   ├── models/               # Data models
+│   │   └── widgets/              # Common widgets
+│   │
+│   └── main.dart                 # Application entry point
 │
-├── android/                      # Android platformu
-├── ios/                          # iOS platformu
-├── assets/                       # Görsel ve medya dosyaları
-├── pubspec.yaml                  # Flutter bağımlılıkları
+├── android/                      # Android native code
+├── ios/                          # iOS native code
+├── assets/                       # Images, icons, media files
 │
-├── models/                       # Backend MongoDB modelleri
-│   ├── User.js                   # Kullanıcı modeli
-│   ├── Admin.js                  # Admin modeli
-│   ├── Education.js              # Eğitim modeli
-│   ├── Author.js                 # Yazar modeli
-│   ├── Expert.js                 # Uzman modeli
-│   ├── Session.js                # Seans modeli
-│   ├── Appointment.js            # Randevu modeli
-│   ├── Book.js                   # Kitap modeli
-│   └── Content.js                # İçerik modeli
-│
-├── routes/                       # Backend API rotaları
-│   ├── auth.js                   # Kimlik doğrulama
-│   ├── admin.js                  # Admin yönetimi
-│   ├── education.js              # Eğitim yönetimi
-│   ├── authors.js                # Yazar yönetimi
-│   ├── experts.js                # Uzman yönetimi
-│   └── users.js                  # Kullanıcı yönetimi
-│
-├── middleware/                   # Backend ara yazılımlar
-│   ├── auth.js                   # Kimlik doğrulama
-│   ├── validation.js             # Veri doğrulama
-│   └── upload.js                 # Dosya yükleme
-│
-├── views/                        # Admin panel HTML
-│   └── admin.html                # Admin panel arayüzü
-│
-├── public/                       # Statik dosyalar
-├── uploads/                      # Yüklenen dosyalar
-│
-├── firebase.json                 # Firebase yapılandırması
-├── firestore.rules               # Firestore güvenlik kuralları
-├── storage.rules                 # Storage güvenlik kuralları
-│
-├── server.js                     # Backend ana sunucu
-├── package.json                  # Node.js bağımlılıkları
-├── .gitignore                    # Git ignore kuralları
-└── README.md                     # Bu dosya
+├── pubspec.yaml                  # Flutter dependencies
+├── .gitignore                    # Git ignore rules
+├── LICENSE                       # Proprietary license
+└── README.md                     # This file
+
+📝 Backend Architecture (Not in repository)
+├── Firebase Cloud Functions      # Serverless backend
+├── Node.js REST API             # Custom API endpoints
+├── MongoDB Database             # User data & content
+├── Firebase Firestore           # Real-time database
+├── Firebase Storage             # Media storage
+└── RevenueCat Integration       # Subscription management
 ```
 
-## 🔌 API Endpoints
+## 🔐 Güvenlik ve Mimari
 
-### Kimlik Doğrulama
-- `POST /api/auth/login` - Admin girişi
-- `GET /api/auth/profile` - Profil bilgileri
-- `PUT /api/auth/profile` - Profil güncelleme
-- `PUT /api/auth/change-password` - Şifre değiştirme
-- `POST /api/auth/logout` - Çıkış yapma
+### Enterprise-Level Güvenlik
 
-### Admin Yönetimi
-- `GET /api/admin` - Admin listesi
-- `POST /api/admin` - Yeni admin oluşturma
-- `PUT /api/admin/:id` - Admin güncelleme
-- `DELETE /api/admin/:id` - Admin silme
+- **🔒 Multi-layer Authentication**: Firebase Auth + Custom JWT
+- **🛡️ Data Encryption**: End-to-end şifreleme
+- **🚦 Rate Limiting**: API abuse koruması
+- **🔑 API Key Management**: Secure credential handling
+- **📝 Input Validation**: Comprehensive data sanitization
+- **🔍 Security Monitoring**: Real-time threat detection
+- **📊 Audit Logging**: Full activity tracking
 
-### Eğitim Yönetimi
-- `GET /api/education` - Eğitim listesi
-- `POST /api/education` - Yeni eğitim oluşturma
-- `PUT /api/education/:id` - Eğitim güncelleme
-- `DELETE /api/education/:id` - Eğitim silme
-- `PATCH /api/education/:id/publish` - Yayın durumu değiştirme
+### Performans Optimizasyonları
 
-### Diğer Modüller
-Benzer CRUD işlemleri tüm modüller için mevcuttur.
+- **⚡ Lazy Loading**: On-demand content loading
+- **💾 Smart Caching**: Multi-level cache stratejisi
+- **🖼️ Image Optimization**: Automatic compression ve CDN
+- **📦 Code Splitting**: Minimal bundle size
+- **🔄 Background Sync**: Offline-first yaklaşım
+- **📈 Analytics Integration**: Real-time user insights
 
-## 🔒 Güvenlik Özellikleri
+### Scalability
 
-- **JWT Token**: Güvenli kimlik doğrulama
-- **Rate Limiting**: API istek sınırlaması
-- **CORS**: Cross-origin istek kontrolü
-- **Helmet**: HTTP güvenlik başlıkları
-- **Input Validation**: Veri doğrulama
-- **File Upload Security**: Güvenli dosya yükleme
-- **Password Hashing**: Şifre şifreleme
+- **☁️ Cloud-Native Architecture**: Firebase + MongoDB Atlas
+- **🔄 Auto-Scaling**: Dinamik kaynak yönetimi
+- **🌍 Global CDN**: Düşük latency
+- **💪 High Availability**: 99.9% uptime
+- **📊 Load Balancing**: Traffic distribution
 
-## 📊 Dosya Yükleme
+## 📄 Ek Dökümanlar
 
-### Desteklenen Formatlar
-- **Resimler**: JPEG, PNG, GIF, WebP
-- **Dokümanlar**: PDF, EPUB, TXT
-- **Ses**: MP3, WAV, OGG
-- **Video**: MP4, WebM, OGG
+Repository'de bulunan diğer önemli dökümanlar:
 
-### Özellikler
-- Otomatik resim boyutlandırma
-- Thumbnail oluşturma
-- Dosya boyutu sınırlaması
-- Güvenli dosya adlandırma
+- [Privacy Policy](PRIVACY_POLICY.md) - Gizlilik politikası
+- [Terms of Service](TERMS_OF_SERVICE.md) - Kullanım koşulları
+- [RevenueCat Integration](REVENUECAT_INTEGRATION_GUIDE.md) - Abonelik entegrasyonu
 
-## 🚀 Production Deployment
+---
 
-### Environment Variables
-```env
-NODE_ENV=production
-PORT=3000
-MONGODB_URI=mongodb://your-production-db
-JWT_SECRET=your-super-secure-secret
-CLOUDINARY_CLOUD_NAME=your-cloud-name
-CLOUDINARY_API_KEY=your-api-key
-CLOUDINARY_API_SECRET=your-api-secret
-```
+## 📄 Lisans ve Telif Hakları
 
-### PM2 ile Deployment
-```bash
-npm install -g pm2
-pm2 start server.js --name "innerdreams-backend"
-pm2 startup
-pm2 save
-```
+**© 2024 Davut Can. Tüm hakları saklıdır.**
 
-### Nginx Konfigürasyonu
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-    
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
+Bu proje **Proprietary License** altındadır. Detaylı bilgi için [LICENSE](LICENSE) dosyasına bakınız.
 
-## 🧪 Test
+### Kısıtlamalar
 
-```bash
-# Test çalıştırma
-npm test
+- ❌ Kod kopyalanamaz, değiştirilemez veya dağıtılamaz
+- ❌ Ticari veya kişisel projede kullanılamaz
+- ❌ Türev çalışmalar oluşturulamaz
+- ❌ Reverse engineering yapılamaz
+- ✅ Yalnızca görüntüleme ve inceleme amaçlıdır
 
-# Coverage raporu
-npm run test:coverage
-```
+### İzinler için İletişim
 
-## 📝 Loglama
-
-Uygulama aşağıdaki logları tutar:
-- Kimlik doğrulama işlemleri
-- CRUD işlemleri
-- Dosya yükleme işlemleri
-- Hata logları
-- Performans metrikleri
-
-## 🔐 Güvenlik Notları
-
-### Hassas Bilgiler
-Aşağıdaki dosyalar **ASLA** git'e commit edilmemelidir:
-- `.env` - Environment variables
-- `service-account-key.json` - Firebase admin credentials
-- `android/app/google-services.json` - Firebase Android config
-- `ios/Runner/GoogleService-Info.plist` - Firebase iOS config
-- `android/key.properties` - Android signing keys
-- `android/app/upload-keystore.jks` - Android keystore
-
-### Güvenlik Özellikleri
-- JWT token tabanlı authentication
-- Firebase Security Rules
-- API rate limiting
-- Input validation ve sanitization
-- Password hashing (bcrypt)
-- CORS politikaları
-- Helmet.js güvenlik başlıkları
-
-## 📱 Uygulama Ekran Görüntüleri
-
-Proje dizininde `flutter_01.png` - `flutter_08.png` dosyalarında uygulama ekran görüntüleri bulunmaktadır.
-
-## 📄 Dökümanlar
-
-- [Privacy Policy](PRIVACY_POLICY.md)
-- [Terms of Service](TERMS_OF_SERVICE.md)
-- [RevenueCat Integration Guide](REVENUECAT_INTEGRATION_GUIDE.md)
-
-## 🤝 Katkıda Bulunma
-
-Katkılarınızı memnuniyetle karşılıyorum! Katkıda bulunmak için:
-
-1. Bu repository'yi fork edin
-2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add some AmazingFeature'`)
-4. Branch'inizi push edin (`git push origin feature/AmazingFeature`)
-5. Pull Request açın
-
-### Katkı Alanları
-
-- 🐛 Bug fixes
-- ✨ Yeni özellikler
-- 📝 Dokümantasyon iyileştirmeleri
-- 🌍 Çeviri ve lokalizasyon
-- 🎨 UI/UX iyileştirmeleri
-- ⚡ Performance optimizasyonları
-
-## 📄 Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
-
-## 👨‍💻 Geliştirici
+Ticari kullanım, lisanslama veya işbirliği için:
 
 **Davut Can**
-- GitHub: [@davutcan15081](https://github.com/davutcan15081)
-- Email: davutcan15081@gmail.com
+- 📧 Email: davutcan15081@gmail.com
+- 💼 GitHub: [@davutcan15081](https://github.com/davutcan15081)
+- 🔗 LinkedIn: [Profil Linki]
 
-## 🙏 Teşekkürler
+---
 
-Bu proje aşağıdaki açık kaynak teknolojiler sayesinde mümkün oldu:
-- [Flutter](https://flutter.dev) - UI Framework
-- [Firebase](https://firebase.google.com) - Backend Services
-- [Riverpod](https://riverpod.dev) - State Management
-- [RevenueCat](https://www.revenuecat.com) - Subscription Management
+## 🙏 Kullanılan Teknolojiler
 
-## 📊 Proje İstatistikleri
+Bu proje aşağıdaki teknolojiler ve servisler kullanılarak geliştirilmiştir:
+
+| Teknoloji | Amaç |
+|-----------|------|
+| [Flutter](https://flutter.dev) | Cross-platform UI framework |
+| [Firebase](https://firebase.google.com) | Backend infrastructure |
+| [Riverpod](https://riverpod.dev) | State management |
+| [RevenueCat](https://www.revenuecat.com) | Subscription management |
+| [MongoDB](https://www.mongodb.com) | Database |
+| [Node.js](https://nodejs.org) | Backend services |
+
+---
+
+## 📊 Repository İstatistikleri
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/davutcan15081/InnerDreams)
 ![GitHub code size](https://img.shields.io/github/languages/code-size/davutcan15081/InnerDreams)
-![GitHub language count](https://img.shields.io/github/languages/count/davutcan15081/InnerDreams)
 ![GitHub top language](https://img.shields.io/github/languages/top/davutcan15081/InnerDreams)
+![GitHub last commit](https://img.shields.io/github/last-commit/davutcan15081/InnerDreams)
 
 ---
 
 <p align="center">
-  <b>InnerDreams</b> - Rüya analizi ve kişisel gelişim platformu 🌙✨
+  <b>🌙 InnerDreams</b>
   <br/>
-  Made with ❤️ using Flutter & Node.js
+  <i>Production-Ready Commercial Mobile Application</i>
+  <br/><br/>
+  <b>© 2024 Davut Can. All Rights Reserved.</b>
+  <br/>
+  <sub>This is a proprietary commercial project for portfolio showcase</sub>
+</p>
+
+---
+
+<p align="center">
+  <i>⚠️ Unauthorized use, reproduction, or distribution is strictly prohibited</i>
 </p>

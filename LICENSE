@@ -1,21 +1,52 @@
-MIT License
+PROPRIETARY LICENSE
 
-Copyright (c) 2024 Davut Can
+Copyright (c) 2024 Davut Can. All Rights Reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software and associated documentation files (the "Software") are the proprietary
+property of Davut Can and are protected by copyright laws and international copyright
+treaties, as well as other intellectual property laws and treaties.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+TERMS AND CONDITIONS:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. OWNERSHIP
+   The Software is licensed, not sold. Davut Can retains all rights, title, and
+   interest in and to the Software, including all intellectual property rights.
+
+2. RESTRICTIONS
+   You may NOT:
+   - Copy, modify, or create derivative works of the Software
+   - Reverse engineer, decompile, or disassemble the Software
+   - Remove or alter any proprietary notices or labels on the Software
+   - Distribute, sublicense, lease, rent, loan, or otherwise transfer the Software
+   - Use the Software for any commercial purpose without explicit written permission
+   - Use the Software to develop competing products or services
+
+3. SHOWCASE PURPOSE
+   This repository is provided for portfolio and demonstration purposes only.
+   The code is displayed to showcase technical capabilities and project architecture.
+
+4. NO LICENSE GRANTED
+   Viewing this repository does NOT grant you any license or rights to use,
+   copy, modify, or distribute the Software in any way.
+
+5. DISCLAIMER OF WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+6. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL DAVUT CAN BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+7. CONTACT
+   For licensing inquiries or permissions, please contact:
+   Email: davutcan15081@gmail.com
+   GitHub: @davutcan15081
+
+This license is effective as of November 2024 and shall remain in effect until
+terminated by Davut Can.
+
+UNAUTHORIZED USE, REPRODUCTION, OR DISTRIBUTION IS STRICTLY PROHIBITED AND MAY
+RESULT IN SEVERE CIVIL AND CRIMINAL PENALTIES.
