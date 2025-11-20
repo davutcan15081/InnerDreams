@@ -1,247 +1,157 @@
-# InnerDreams - Rüya Tabirleri ve AI Koçluk Uygulaması
+# 🌙 InnerDreams - Rüya Tabirleri ve AI Koçluk Uygulaması
 
-InnerDreams, kullanıcıların rüyalarını analiz etmelerine, kişisel gelişim eğitimleri almalarına ve uzmanlarla bağlantı kurmalarına olanak tanıyan kapsamlı bir mobil uygulama ve yönetim sistemidir.
+[![Flutter](https://img.shields.io/badge/Flutter-3.0+-02569B?logo=flutter)](https://flutter.dev)
+[![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## Proje Yapısı
+> Kullanıcıların rüyalarını analiz etmelerine, kişisel gelişim eğitimleri almalarına ve uzmanlarla bağlantı kurmalarına olanak tanıyan full-stack mobil uygulama ve yönetim sistemi.
 
-Bu repository iki ana bileşenden oluşmaktadır:
-- **Flutter Mobil Uygulama**: iOS ve Android için cross-platform mobil uygulama
-- **Node.js Backend & Admin Panel**: İçerik yönetim sistemi ve API servisleri
+## 📱 Ekran Görüntüleri
 
-## 🚀 Mobil Uygulama Özellikleri
+<p align="center">
+  <img src="flutter_01.png" width="200" alt="Ana Sayfa"/>
+  <img src="flutter_02.png" width="200" alt="Rüya Analizi"/>
+  <img src="flutter_03.png" width="200" alt="Eğitimler"/>
+  <img src="flutter_04.png" width="200" alt="Uzmanlar"/>
+</p>
 
-### 🌙 Rüya Analizi
-- AI destekli rüya tabiri
-- Detaylı rüya sembolleri veritabanı
-- Kişisel rüya günlüğü
-- Geçmiş rüya kayıtları ve analizleri
+## 🎯 Proje Hakkında
 
-### 🎓 Kişisel Gelişim Eğitimleri
-- Video, ses ve metin tabanlı eğitim içerikleri
-- Kategori ve seviye bazlı filtreleme
-- İlerleme takibi
-- Favori içerikler
+Bu proje, modern mobil uygulama geliştirme teknolojilerini kullanarak oluşturulmuş kapsamlı bir platformdur:
 
-### 👨‍⚕️ Uzman Danışmanlık
-- Sertifikalı uzmanlarla online görüşme
-- Randevu sistemli seans rezervasyonu
-- Grup ve bireysel seanslar
-- Ödeme entegrasyonu
+- **🎨 Flutter Mobil Uygulama**: iOS ve Android için cross-platform native uygulama
+- **⚙️ Node.js Backend**: RESTful API ve admin panel
+- **☁️ Firebase Integration**: Authentication, Firestore, Storage
+- **💳 RevenueCat**: Abonelik ve ödeme yönetimi
+- **🗄️ MongoDB**: Backend veritabanı
 
-### 📚 Dijital Kütüphane
-- PDF, EPUB formatında e-kitaplar
-- Sesli kitap desteği
-- Kategori bazlı arama
-- Offline okuma
+> **Not**: Bu repository portföy amaçlı paylaşılmaktadır. Gerçek API anahtarları ve hassas bilgiler repository'de bulunmamaktadır.
 
-### 💳 Abonelik Sistemi
-- RevenueCat entegrasyonu
-- Farklı abonelik paketleri
-- Ücretsiz deneme süresi
-- Güvenli ödeme altyapısı
+## ✨ Özellikler
 
-### 🔐 Kullanıcı Yönetimi
-- Email ve Google ile giriş
-- Firebase Authentication
-- Güvenli profil yönetimi
-- Kişiselleştirilmiş deneyim
+### 📱 Mobil Uygulama
 
----
+| Özellik | Açıklama |
+|---------|----------|
+| 🌙 **Rüya Analizi** | AI destekli rüya tabiri, detaylı sembol veritabanı, kişisel rüya günlüğü |
+| 🎓 **Eğitim Platformu** | Video/ses/metin içerikler, kategori filtreleme, ilerleme takibi |
+| 👨‍⚕️ **Uzman Danışmanlık** | Sertifikalı uzmanlarla online görüşme, randevu sistemi |
+| 📚 **Dijital Kütüphane** | PDF/EPUB e-kitaplar, sesli kitaplar, offline okuma |
+| 💳 **Abonelik Sistemi** | RevenueCat entegrasyonu, farklı paketler, ücretsiz deneme |
+| 🔐 **Authentication** | Email ve Google Sign-In, Firebase Auth |
+| 🎨 **Modern UI/UX** | Material Design, custom animations, responsive layout |
+| 🌍 **Çoklu Dil** | Türkçe ve İngilizce dil desteği |
 
-## 🛠️ Backend & Admin Panel Özellikleri
+### ⚙️ Backend & Admin Panel
 
-### 📊 Dashboard
-- Sistem genel istatistikleri
-- Son aktiviteler
-- Kullanıcı metrikleri
-- Gelir raporları
-
-### 👥 Kullanıcı Yönetimi
-- Kullanıcı listesi ve detayları
-- Abonelik durumu yönetimi
-- Kullanıcı istatistikleri
-
-### 🎓 Eğitim Yönetimi
-- Eğitim içerikleri oluşturma/düzenleme
-- Kategori ve seviye yönetimi
-- Dosya yükleme (resim, video, ses, doküman)
-- Yayın durumu kontrolü
-
-### ✍️ Yazar Yönetimi
-- Yazar profilleri
-- Uzmanlık alanları
-- Doğrulama sistemi
-- Performans metrikleri
-
-### 👨‍⚕️ Uzman Yönetimi
-- Uzman profilleri
-- Müsaitlik takvimi
-- Seans türleri ve fiyatlandırma
-- Randevu yönetimi
-
-### 📅 Seans Yönetimi
-- Seans oluşturma/düzenleme
-- Kategori ve tür yönetimi
-- Kapasite ve fiyat ayarları
-- Yayın durumu kontrolü
-
-### 🗓️ Randevu Yönetimi
-- Randevu listesi
-- Durum takibi
-- Ödeme durumu
-- İptal/erteleme işlemleri
-
-### 📚 Kitap Yönetimi
-- Kitap kataloğu
-- Dosya yükleme (PDF, EPUB, sesli kitap)
-- Kategori ve etiket yönetimi
-- İndirme istatistikleri
-
-### 📝 İçerik Yönetimi
-- Makale/blog yazıları
-- SEO optimizasyonu
-- Medya yönetimi
-- Yorum moderasyonu
-
-### 🔐 Admin Yönetimi
-- Admin kullanıcıları
-- Rol ve yetki yönetimi
-- Aktivite logları
+| Özellik | Açıklama |
+|---------|----------|
+| 📊 **Dashboard** | Real-time istatistikler, kullanıcı metrikleri, gelir raporları |
+| 👥 **Kullanıcı Yönetimi** | CRUD işlemleri, abonelik yönetimi, aktivite takibi |
+| 📚 **İçerik Yönetimi** | Eğitim, kitap, makale yönetimi, medya yükleme |
+| 👨‍⚕️ **Uzman & Seans** | Uzman profilleri, randevu sistemi, takvim yönetimi |
+| 🔒 **Güvenlik** | JWT authentication, role-based access control |
+| 📤 **Dosya Yönetimi** | Multer + Sharp ile optimize edilmiş yükleme |
+| 🔔 **Bildirimler** | Email notifications (Nodemailer) |
 
 ## 🛠️ Teknoloji Stack
 
-### Flutter Mobil Uygulama
-- **Framework**: Flutter 3.0+
-- **Dil**: Dart
-- **State Management**: Riverpod
-- **Routing**: GoRouter
-- **HTTP Client**: Dio
-- **Authentication**: Firebase Auth
-- **Database**: Cloud Firestore
-- **Storage**: Firebase Storage
-- **Subscription**: RevenueCat
-- **UI Components**: Custom widgets, Shimmer, Cached Network Image
-- **File Handling**: PDF Viewer (Syncfusion), Video Player, WebView
+### 📱 Frontend (Flutter)
 
-### Backend & Admin Panel
-- **Backend**: Node.js + Express.js
-- **Veritabanı**: MongoDB + Mongoose, Cloud Firestore
-- **Kimlik Doğrulama**: JWT, Firebase Admin SDK
-- **Dosya Yükleme**: Multer + Sharp (resim işleme)
-- **Validasyon**: Express-validator
-- **Güvenlik**: Helmet, CORS, Rate Limiting
-- **Admin Frontend**: Bootstrap 5 + Vanilla JavaScript
-- **Email**: Nodemailer
-- **Image Processing**: Sharp, Cloudinary
+```
+├── Framework        : Flutter 3.0+ / Dart
+├── State Management : Riverpod
+├── Routing          : GoRouter
+├── HTTP Client      : Dio
+├── Local Storage    : Shared Preferences, Secure Storage
+└── UI Libraries     : Shimmer, Cached Network Image, Syncfusion PDF Viewer
+```
 
-## 📦 Kurulum
+### ⚙️ Backend (Node.js)
+
+```
+├── Runtime          : Node.js 18+
+├── Framework        : Express.js
+├── Authentication   : JWT, Firebase Admin SDK
+├── Validation       : Express Validator
+├── Security         : Helmet, CORS, Rate Limiting
+├── File Upload      : Multer
+└── Image Processing : Sharp, Cloudinary
+```
+
+### ☁️ Cloud Services
+
+```
+├── Authentication   : Firebase Auth (Email, Google Sign-In)
+├── Database         : Cloud Firestore, MongoDB Atlas
+├── Storage          : Firebase Storage
+├── Subscription     : RevenueCat
+└── Hosting          : Firebase Hosting (Optional)
+```
+
+### 🎨 Key Technical Highlights
+
+- **Clean Architecture**: Feature-based modular structure
+- **State Management**: Centralized state with Riverpod
+- **Responsive Design**: Adaptive layouts for tablets and phones
+- **Offline Support**: Local caching and data persistence
+- **Real-time Updates**: Firebase Realtime listeners
+- **Security**: Environment variables, Firebase Security Rules
+- **Performance**: Image optimization, lazy loading, pagination
+
+## 🚀 Kurulum
+
+> **Önemli**: Bu proje demo/portföy amaçlıdır. Çalıştırmak için kendi Firebase ve API anahtarlarınızı oluşturmanız gerekmektedir.
 
 ### Gereksinimler
-- Flutter SDK (3.0+)
-- Dart SDK
-- Android Studio / Xcode
-- Node.js (v18+)
-- MongoDB (v5+)
+
+- Flutter SDK 3.0+
+- Node.js 18+
 - Firebase hesabı
+- MongoDB (local veya Atlas)
+- RevenueCat hesabı (opsiyonel)
 
-### Flutter Mobil Uygulama Kurulumu
+### Hızlı Başlangıç
 
-1. **Projeyi klonlayın**
 ```bash
-git clone <repository-url>
-cd InnerDreamsFlutter
-```
+# Repository'yi klonlayın
+git clone https://github.com/davutcan15081/InnerDreams.git
+cd InnerDreams
 
-2. **Flutter bağımlılıklarını yükleyin**
-```bash
+# Flutter bağımlılıkları
 flutter pub get
-```
 
-3. **Firebase yapılandırması**
-- Firebase Console'da yeni bir proje oluşturun
-- Android için `google-services.json` dosyasını `android/app/` dizinine ekleyin
-- iOS için `GoogleService-Info.plist` dosyasını `ios/Runner/` dizinine ekleyin
-- Cloud Firestore ve Firebase Storage'ı aktifleştirin
-- Firebase Authentication'da Email/Password ve Google Sign-In'i etkinleştirin
-
-4. **RevenueCat yapılandırması**
-- RevenueCat hesabınızda yeni bir proje oluşturun
-- API anahtarlarınızı alın
-- Ürün kimliklerinizi tanımlayın
-
-5. **Uygulamayı çalıştırın**
-```bash
-# Android
-flutter run
-
-# iOS
-flutter run -d ios
-
-# Release build
-flutter build apk --release
-flutter build ios --release
-```
-
-### Backend & Admin Panel Kurulumu
-
-1. **Backend dizinine gidin**
-```bash
-cd InnerDreamsFlutter
-```
-
-2. **Node.js bağımlılıklarını yükleyin**
-```bash
+# Backend bağımlılıkları
 npm install
-```
 
-3. **Çevre değişkenlerini ayarlayın**
-```bash
+# Environment dosyasını oluşturun
 cp env.example .env
+# .env dosyasını kendi bilgilerinizle güncelleyin
+
+# Uygulamayı çalıştırın
+flutter run
 ```
 
-`.env` dosyasını düzenleyin:
-```env
-PORT=3000
-NODE_ENV=development
-MONGODB_URI=mongodb://localhost:27017/innerdreams
-JWT_SECRET=your-super-secret-jwt-key
-ADMIN_EMAIL=admin@innerdreams.com
-ADMIN_PASSWORD=admin123
-```
+### 🔧 Yapılandırma
 
-4. **Firebase Admin SDK yapılandırması**
-- Firebase Console'dan Service Account Key dosyasını indirin
-- `service-account-key.json` olarak kaydedin (bu dosya .gitignore'da)
+1. **Firebase Setup**
+   - Firebase Console'da yeni proje oluşturun
+   - `google-services.json` → `android/app/`
+   - `GoogleService-Info.plist` → `ios/Runner/`
+   - Authentication, Firestore, Storage'ı aktifleştirin
 
-5. **MongoDB'yi başlatın**
-```bash
-# Windows
-net start MongoDB
+2. **Backend Setup**
+   - `.env` dosyasında MongoDB URI'yi güncelleyin
+   - JWT secret key ekleyin
+   - Firebase service account key'i ekleyin
 
-# macOS/Linux
-sudo systemctl start mongod
-```
+3. **RevenueCat (Opsiyonel)**
+   - RevenueCat dashboard'da proje oluşturun
+   - API key'i kodda güncelleyin
 
-6. **Backend'i başlatın**
-```bash
-# Development
-npm run dev
-
-# Production
-npm start
-```
-
-7. **Admin paneline erişin**
-```
-http://localhost:3000/admin
-```
-
-## 🔑 Varsayılan Admin Hesabı
-
-- **Email**: admin@innerdreams.com
-- **Şifre**: admin123
-
-⚠️ **Güvenlik**: İlk girişten sonra mutlaka şifrenizi değiştirin!
+Detaylı kurulum için [INSTALLATION.md](docs/INSTALLATION.md) dosyasına bakabilirsiniz.
 
 ## 📁 Proje Yapısı
 
@@ -448,18 +358,52 @@ Proje dizininde `flutter_01.png` - `flutter_08.png` dosyalarında uygulama ekran
 
 ## 🤝 Katkıda Bulunma
 
-Bu proje private bir repository'dir. Geliştirme takımı üyeleri:
-1. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-2. Değişikliklerinizi commit edin (`git commit -m 'Add amazing feature'`)
-3. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-4. Pull Request oluşturun
+Katkılarınızı memnuniyetle karşılıyorum! Katkıda bulunmak için:
 
-## 📞 İletişim
+1. Bu repository'yi fork edin
+2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
+3. Değişikliklerinizi commit edin (`git commit -m 'Add some AmazingFeature'`)
+4. Branch'inizi push edin (`git push origin feature/AmazingFeature`)
+5. Pull Request açın
 
-Teknik destek ve sorularınız için:
-- Email: support@innerdreams.com
-- Geliştirici: InnerDreams Team
+### Katkı Alanları
+
+- 🐛 Bug fixes
+- ✨ Yeni özellikler
+- 📝 Dokümantasyon iyileştirmeleri
+- 🌍 Çeviri ve lokalizasyon
+- 🎨 UI/UX iyileştirmeleri
+- ⚡ Performance optimizasyonları
+
+## 📄 Lisans
+
+Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
+
+## 👨‍💻 Geliştirici
+
+**Davut Can**
+- GitHub: [@davutcan15081](https://github.com/davutcan15081)
+- Email: davutcan15081@gmail.com
+
+## 🙏 Teşekkürler
+
+Bu proje aşağıdaki açık kaynak teknolojiler sayesinde mümkün oldu:
+- [Flutter](https://flutter.dev) - UI Framework
+- [Firebase](https://firebase.google.com) - Backend Services
+- [Riverpod](https://riverpod.dev) - State Management
+- [RevenueCat](https://www.revenuecat.com) - Subscription Management
+
+## 📊 Proje İstatistikleri
+
+![GitHub repo size](https://img.shields.io/github/repo-size/davutcan15081/InnerDreams)
+![GitHub code size](https://img.shields.io/github/languages/code-size/davutcan15081/InnerDreams)
+![GitHub language count](https://img.shields.io/github/languages/count/davutcan15081/InnerDreams)
+![GitHub top language](https://img.shields.io/github/languages/top/davutcan15081/InnerDreams)
 
 ---
 
-**InnerDreams** - Rüya analizi ve kişisel gelişim platformu 🌙✨
+<p align="center">
+  <b>InnerDreams</b> - Rüya analizi ve kişisel gelişim platformu 🌙✨
+  <br/>
+  Made with ❤️ using Flutter & Node.js
+</p>
